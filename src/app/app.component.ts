@@ -121,6 +121,8 @@ class Employee{
 
   }
 
+
+  //messed up in the code below
   // class Person{
 
 
@@ -147,8 +149,29 @@ class Employee{
   // getDetail(){
   //   return `My name is ${this.name} and I work in ${this.departemnt}.`;
   // }
+  
 }
 
+interface Stuff{
+
+  name:string;
+  age:number;
+  department?:string;
+
+  foo(s:string);
+  //foo?(n:number);
+}
+
+// class StuffTwo implements Stuff{
+
+//   name:string;
+//   age:number;
+
+//   //
+//   foo?(s:string){
+//     this.name=s;
+//   }
+// }
 
 @Component({
   selector: 'app-root',
@@ -166,9 +189,18 @@ export class AppComponent implements OnInit{
     //this.classTesting();
 
     //this.animalClassTesting();
-    this.extendDerivedClassTesting();
+    //this.extendDerivedClassTesting();
     //this.protectedTesting();
+    const postions:number[] = [234,342,23,44];
+    const colors:string[] = ['blue','red','yellow','green'];
+    console.log('random number selcted:',this.randomIntElem(postions));
+    console.log('random string selcted:',this.randomStrElem(colors));
+
+    console.log('random color selected from randomElem', this.randomElem(colors));
   }
+
+
+  //classes
 
   classCompatibilityTesting(){
 
@@ -224,5 +256,35 @@ export class AppComponent implements OnInit{
 
   // const person = new Person("Patrick");
 
-  
+  interfaceTesting(x:Stuff){
+
+    //const stuff = new StuffTwo();
+
+    // stuff.foo("test");
+    // console.log(stuff.name);
+  }
+
+
+  //Genrics
+
+  //this is expecting an array, numbers
+  randomIntElem(arr:number[]):number{
+
+    //math.floor round down 
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  //this is also expecting an array, string
+  randomStrElem(arr:string[]):string{
+
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  randomElem(arr: any[]):any{
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+
+  }
 }
