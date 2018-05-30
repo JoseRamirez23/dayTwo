@@ -173,6 +173,28 @@ interface Stuff{
 //   }
 // }
 
+//Modules
+module Shapes{
+
+  // so it can be used in ngOnInit you use export
+  export class Rectangle{
+
+    // height : number;
+    // widht: number;
+
+    // this with set a height and width
+    constructor(public height: number, public width:number){
+
+    }
+
+    
+
+  }
+
+  //so export is used when you want to use this somewhere else
+  export const rect1 = new Rectangle(10,4);
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -191,6 +213,11 @@ export class AppComponent implements OnInit{
     //this.animalClassTesting();
     //this.extendDerivedClassTesting();
     //this.protectedTesting();
+    const rect2 = Shapes;
+    console.log(rect2);
+
+
+
     const postions:number[] = [234,342,23,44];
     const colors:string[] = ['blue','red','yellow','green'];
     console.log('random number selcted:',this.randomIntElem(postions));
@@ -248,6 +275,8 @@ export class AppComponent implements OnInit{
 
   }
 
+
+
   // protectedTesting(){
 
   //   const worker = new Worker("steve","sales");
@@ -278,6 +307,8 @@ export class AppComponent implements OnInit{
   //this is also expecting an array, string
   randomStrElem(arr:string[]):string{
 
+
+    //this is so you will pick an random number from an array
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
   }
@@ -287,4 +318,6 @@ export class AppComponent implements OnInit{
     return arr[randomIndex];
 
   }
+
+  //end genrics
 }
